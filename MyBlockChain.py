@@ -1,3 +1,4 @@
+
 import hashlib
 import json
 from textwrap import dedent
@@ -213,13 +214,13 @@ class Blockchain (object):
 
 class Block (object):
 	def __init__(self, transactions, time, index):
-		self.index = index;
-		self.transactions = transactions;
-		self.time = time;
-		self.prev = '';
+		self.index = index; #Block number 
+		self.transactions = transactions; #Transaction data
+		self.time = time; #Time of the block is created
+		self.prev = '';  #Hash of previous blocks
 		self.nonse = 0;
-		self.gym = self.calculateGym();
-		self.hash = self.calculateHash();
+		self.gym = self.calculateGym();   #hash of gym
+		self.hash = self.calculateHash(); #hash of block
 
 	def calculateGym(self):
 		return "24 hr";
@@ -266,8 +267,8 @@ class Transaction (object):
 		self.sender = sender;
 		self.reciever = reciever;
 		self.amt = amt;
-		self.time = datetime.now().strftime("%m/%d/%Y, %H:%M:%S"); #change to current date
-		self.hash = self.calculateHash();
+		self.time = datetime.now().strftime("%m/%d/%Y, %H:%M:%S"); #change to current date  #time of transacction is created
+		self.hash = self.calculateHash();  #hash of transaction
 
 
 	def calculateHash(self):
