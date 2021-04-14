@@ -13,7 +13,7 @@ from datetime import datetime
 import requests
 
 
-class Blockchain (object):
+class Blockchain (object):  #The blockchain
 	def __init__(self):
 		self.chain = [self.addGenesisBlock()];
 		self.pendingTransactions = [];
@@ -212,7 +212,7 @@ class Blockchain (object):
 		return balance + 100;
 
 
-class Block (object):
+class Block (object):     #The block
 	def __init__(self, transactions, time, index):
 		self.index = index; #Block number 
 		self.transactions = transactions; #Transaction data
@@ -233,7 +233,7 @@ class Block (object):
 			hashTransactions += transaction.hash;
 		hashString = str(self.time) + hashTransactions + self.gym + self.prev + str(self.nonse);
 		hashEncoded = json.dumps(hashString, sort_keys=True).encode();
-		return hashlib.sha256(hashEncoded).hexdigest();
+		return hashlib.sha256(hashEncoded).hexdigest();  #SHA256 Hash encoding -same as bitcoin
 
 	def mineBlock(self, difficulty):
 		arr = [];
@@ -268,13 +268,13 @@ class Transaction (object):
 		self.reciever = reciever;
 		self.amt = amt;
 		self.time = datetime.now().strftime("%m/%d/%Y, %H:%M:%S"); #change to current date  #time of transacction is created
-		self.hash = self.calculateHash();  #hash of transaction
+		self.hash = self.calculateHash();  #Hash of transaction
 
 
 	def calculateHash(self):
 		hashString = self.sender + self.reciever + str(self.amt) + str(self.time);
 		hashEncoded = json.dumps(hashString, sort_keys=True).encode();
-		return hashlib.sha256(hashEncoded).hexdigest();
+		return hashlib.sha256(hashEncoded).hexdigest();  #SHA256 Hash encoding -same as bitcoin
 
 	def isValidTransaction(self):
 
