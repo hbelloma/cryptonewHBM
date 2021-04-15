@@ -11,8 +11,7 @@ class Block (object):     #The block
 		#self.gym = self.calculateGym();   #hash of gym
 		self.hash = self.calculateHash(); #hash of block
     
-   
-  def calculateHash(self):
+	def calculateHash(self):
 
 		hashTransactions = "";
 
@@ -29,8 +28,8 @@ class Transaction (object):
 		self.amt = amt;
 		self.time = time(); #time of transacction is created
 		self.hash = self.calculateHash();  #Hash of transaction
-    
-  def calculateHash(self):
+   	
+	def calculateHash(self):
 		hashString = self.sender + self.reciever + str(self.amt) + str(self.time);
 		hashEncoded = json.dumps(hashString, sort_keys=True).encode();
 		return hashlib.sha256(hashEncoded).hexdigest();  #SHA256 Hash encoding -same as bitcoin
