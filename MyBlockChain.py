@@ -132,7 +132,7 @@ class Blockchain (object):  #The blockchain
 				return False;
 		return True;
 
-	def generateKeys(self):       #Generacion de llaves
+	def generateKeys(self):       #Generacion de llaves unicas para la firma de transacciones
 		key = RSA.generate(2048)
 		private_key = key.export_key()
 		file_out = open("private.pem", "wb")
