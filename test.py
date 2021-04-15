@@ -9,7 +9,7 @@ SimpleBlockchainexample=Blockchain();
 transaction=Transaction[];
 #transaction=Transaction("Hue G. Rection", "Moe Lester", 10); #forsecond example
 
-#comment this when transaction is added into the SimpleBlockchainexample,py
+#comment this when transaction, mining and PoW is added into the SimpleBlockchainexample,py
 block=Block(transactions,time(),0);
 SimpleBlockchainexample.addBlock(block);
 block=Block(transactions,time(),1);
@@ -17,7 +17,7 @@ SimpleBlockchainexample.addBlock(block);
 block=Block(transactions,time(),2);
 SimpleBlockchainexample.addBlock(block);
 
-#uncomment for example with pending transaction and mining is added
+#uncomment for example with pending transaction, mining and PoW is added
 #SimpleBlockchainexample.pendingTransactions.append(transaction);
 #SimpleBlockchainexample.minePendingTransactions("Nang");
 
