@@ -6,6 +6,29 @@ class Blockchain (object):  #The blockchain
 		self.minerRewards = 50;  #Recompensa de minado
 		self.blockSize = 10;     #Tamaño de bloque
 		self.nodes = set();
+	
+	def addTransaction(self, sender, reciever, amt, keyString, senderKey):
+		keyByte = keyString.encode("ASCII");
+		senderKeyByte = senderKey.encode("ASCII");
+
+		#print(type(keyByte), keyByte);
+
+		key = RSA.import_key(keyByte);
+		senderKey = RSA.import_key(senderKeyByte);
+
+		if not sender or not reciever or not amt:
+			print("transaction error 1");
+			return False;
+
+		transaction = Transaction(sender, reciever, amt);
+
+		transaction.signTransaction(key, senderKey);
+
+		if not transaction.isValidTransaction():
+			print("transaction error 2");
+			return False;
+		self.pendingTransactions.append(transaction);
+		return len(self.chain) + 1;
 		
 	def getLastBlock(self):
         	return self.chain[-1];
