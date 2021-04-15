@@ -1,5 +1,5 @@
 from  SimpleBlockchainexample import*
-#from  SimpleBlockchainexample import Blockchain, Transaction, Block;
+#from  SimpleBlockchainexamplePoW import Blockchain, Transaction, Block;
 from time import time;
 import pprint
 
@@ -18,8 +18,8 @@ block=Block(transactions,time(),2);
 SimpleBlockchainexample.addBlock(block);
 
 #uncomment for example with pending transaction, mining and PoW is added
-#SimpleBlockchainexample.pendingTransactions.append(transaction);
-#SimpleBlockchainexample.minePendingTransactions("Nang");
+#SimpleBlockchainexamplePoW.pendingTransactions.append(transaction);
+#SimpleBlockchainexamplePow.minePendingTransactions("Nang");
 
 pp.print(SimpleBlockchainexample.chainJSONencode());
 print("Length:", len(SimpleBlockchainexample.chain));
