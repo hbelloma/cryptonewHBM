@@ -20,9 +20,7 @@ class Blockchain (object):  #The blockchain
 			blockJSON['index'] = block.index;
 			blockJSON['prev'] = block.prev;
 			blockJSON['time'] = block.time;
-			#blockJSON['nonse'] = block.nonse;
-			#blockJSON['gym'] = block.gym;
-
+			
 
 			transactionsJSON = [];
 			tJSON = {};
@@ -55,9 +53,7 @@ class Blockchain (object):  #The blockchain
 			block = Block(tArr, blockJSON['time'], blockJSON['index']);
 			block.hash = blockJSON['hash'];
 			block.prev =blockJSON['prev'];
-			#block.nonse = blockJSON['nonse'];
-			#block.gym = blockJSON['gym'];
-
+			
 			chain.append(block);
 		return chain;
 	
@@ -68,8 +64,6 @@ class Block (object):     #The block
 		self.transactions = transactions; #Transaction data
 		self.time = time; #Time of the block is created
 		self.prev = '';  #Hash of previous blocks
-		#self.nonse = 0;
-		#self.gym = self.calculateGym();   #hash of gym
 		self.hash = self.calculateHash(); #hash of block
     
 	def calculateHash(self):
