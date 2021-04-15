@@ -16,10 +16,10 @@ import requests
 class Blockchain (object):  #The blockchain
 	def __init__(self):
 		self.chain = [self.addGenesisBlock()];
-		self.pendingTransactions = [];
-		self.difficulty = 2;
-		self.minerRewards = 50;
-		self.blockSize = 10;
+		self.pendingTransactions = []; #Transactions that are waiting to de adding to the blockchain
+		self.difficulty = 2;     #dificultad
+		self.minerRewards = 50;  #Recompensa de minado
+		self.blockSize = 10;     #Tamaño de bloque
 		self.nodes = set();
 
 	def register_node(self, address):
@@ -132,7 +132,7 @@ class Blockchain (object):  #The blockchain
 				return False;
 		return True;
 
-	def generateKeys(self):
+	def generateKeys(self):       #Generacion de llaves
 		key = RSA.generate(2048)
 		private_key = key.export_key()
 		file_out = open("private.pem", "wb")
