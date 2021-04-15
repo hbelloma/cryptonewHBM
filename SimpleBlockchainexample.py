@@ -9,7 +9,57 @@ class Blockchain (object):  #The blockchain
             		block.prev = self.getLastBlock().hash;
         	else:
             		block.prev = "none";
-        	self.chain.append(block)
+        	self.chain.append(block);
+	
+	def chainJSONencode(self): #envia la info a un archivo json
+
+		blockArrJSON = [];
+		for block in self.chain:
+			blockJSON = {};
+			blockJSON['hash'] = block.hash;
+			blockJSON['index'] = block.index;
+			blockJSON['prev'] = block.prev;
+			blockJSON['time'] = block.time;
+			#blockJSON['nonse'] = block.nonse;
+			#blockJSON['gym'] = block.gym;
+
+
+			transactionsJSON = [];
+			tJSON = {};
+			for transaction in block.transactions:
+				tJSON['time'] = transaction.time;
+				tJSON['sender'] = transaction.sender;
+				tJSON['reciever'] = transaction.reciever;
+				tJSON['amt'] = transaction.amt;
+				tJSON['hash'] = transaction.hash;
+				transactionsJSON.append(tJSON);
+
+			blockJSON['transactions'] = transactionsJSON;
+
+			blockArrJSON.append(blockJSON);
+
+		return blockArrJSON;
+	
+	def chainJSONdecode(self, chainJSON):  #decodifica archivo json
+		chain=[];
+		for blockJSON in chainJSON:
+
+			tArr = [];
+			for tJSON in blockJSON['transactions']:
+				transaction = Transaction(tJSON['sender'], tJSON['reciever'], tJSON['amt']);
+				transaction.time = tJSON['time'];
+				transaction.hash = tJSON['hash'];
+				tArr.append(transaction);
+
+
+			block = Block(tArr, blockJSON['time'], blockJSON['index']);
+			block.hash = blockJSON['hash'];
+			block.prev =blockJSON['prev'];
+			#block.nonse = blockJSON['nonse'];
+			#block.gym = blockJSON['gym'];
+
+			chain.append(block);
+		return chain;
 	
 	
 class Block (object):     #The block
