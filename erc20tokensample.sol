@@ -11,7 +11,7 @@ pragma solidity ^0.4.24;
 //
 // Enjoy.
 //
-// (c) by Juan Cruz Martinez 2020. MIT Licence.
+// (c) by Hector Bello Martinez 2021.
 // ----------------------------------------------------------------------------
 
 
